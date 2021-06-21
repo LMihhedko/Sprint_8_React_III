@@ -1,5 +1,6 @@
 import './App.css';
 import {useState} from 'react';
+import {Background, JokeContainer, CenterJokes, Button, Weather} from './styled';
 
 
 function App() {
@@ -21,12 +22,17 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Titulo</h1>
-      <div>{joke}</div>
-      <br/>
-      <button onClick = {getJoke} >Siguiente</button>
-    </div>
+    <Background>
+      <Weather>Avui: parcialment ennuvolat</Weather>
+      <CenterJokes>
+        <JokeContainer>
+        <h1>Preparat per riure? 😂</h1>
+        <div>{joke}</div>
+        <br/>
+        <Button onClick = {getJoke} >Siguiente</Button>
+        </JokeContainer>
+      </CenterJokes>
+    </Background>
   );
 }
 
