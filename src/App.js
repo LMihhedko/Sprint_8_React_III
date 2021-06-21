@@ -1,38 +1,27 @@
-import './App.css';
 import {useState} from 'react';
-import {Background, JokeContainer, CenterJokes, Button, Weather} from './styled';
-
+import Welcome from './components/Welcome'
+import JokeComponent from './components/JokeComponent';
+import {Button, MarginDiv} from './styled';
 
 function App() {
+  const welcome = 'welcome';
+  const joke = 'joke';
 
-  const [joke, setJoke] = useState('');
+  const [location, setLocation] = useState(welcome)
 
-  const getJoke = async () => {
-    const data = await fetch ('https://icanhazdadjoke.com/', {
-      headers : { 
-        'Accept': 'application/json'
-       }
-
-    })
-
-    const jokes = await data.json()
-    const newJoke = jokes.joke
-    
-    setJoke(newJoke)
-  }
+    const handleClick = () => {
+     if (location === welcome) {
+      setLocation(joke)
+     } else {
+      setLocation(welcome)
+     }
+    };
 
   return (
-    <Background>
-      <Weather>Avui: parcialment ennuvolat</Weather>
-      <CenterJokes>
-        <JokeContainer>
-        <h1>Preparat per riure? 😂</h1>
-        <div>{joke}</div>
-        <br/>
-        <Button onClick = {getJoke} >Siguiente</Button>
-        </JokeContainer>
-      </CenterJokes>
-    </Background>
+    <MarginDiv>
+        {location === welcome ? <Welcome/> : <JokeComponent/>}
+       <Button onClick= {handleClick}>{location === welcome ? "Acceder" : "Atras"}  </Button>
+   </MarginDiv>
   );
 }
 

@@ -66,7 +66,14 @@ export const Button = styled.button`
 `
 
 export const Weather = styled.div`
-    margin-top:20px;
-    margin-left:20px;
+    position:absolute;
+    top: 20px;
+    left: 20px;
     color:rgb(59, 59, 59);
+    font-weight:bold;
+`
+
+export const MarginDiv = styled.div`
+    margin-left:50px;
+
 `
